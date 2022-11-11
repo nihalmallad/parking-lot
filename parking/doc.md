@@ -52,7 +52,7 @@ This will allocate a parking slot to a car. Throw an error if the parking lot is
     }
 ```
 
-## GET `api/v1/parking?color=<color>`
+## GET `api/v1/parking?type=car&color=<color>`
 This will fetch all the cars with a particular color.
 
 200 OK
@@ -90,8 +90,8 @@ This will fetch all the parking slots where a car of particular color is parked.
 ```
 
 ## DELETE  
+## `api/v1/parking/slot/:id`
 ## `api/v1/parking/slot/:number`
-## `api/v1/parking/slot?car-reg-number=<number>`
 
 This will free a parking slot based on slot number or car registration number. Throws an error
 if the parking slot was already free or a car with that registration number is not found in the
@@ -105,9 +105,7 @@ parking.
         "car_registration_no":"KA-01-AB-2211",
     }
 
-    200 response {
-        "slot_number":1
-    }
+    204 No Content
 
     404 response "not found"
 ```
