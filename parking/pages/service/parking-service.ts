@@ -9,10 +9,14 @@ export interface Parking {
     create(request: ParkingReq): ParkingResp;
     update(request: ParkingReq): ParkingResp;
     allocate(): number | null
+    isSlotAvailable(): boolean;
 }
 
 export class ParkingService implements Parking {
     public constructor() { }
+    isSlotAvailable(): boolean {
+        return freeSlots.size() != 0
+    }
     create(request: ParkingReq): ParkingResp {
         freeSlots = new PriorityQueue<number>(request.capacity);
 
